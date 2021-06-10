@@ -6,10 +6,14 @@ import { AceEditor } from './components/ace-editor/AceEditor';
 import './App.css';
 
 function App() {
+  const onChangeHandler = (data, event) => {
+    console.log(data, event);
+  };
+
   return (
     <div className='App'>
-      {/*<AceEditor />*/}
-      <Graph />
+      <AceEditor onChange={onChangeHandler} />
+      {/*<Graph />*/}
     </div>
   );
 }
