@@ -1,0 +1,43 @@
+.select {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  top: 170px;
+  right: 50px;
+}
+
+.label {
+  position: absolute;
+  width: 100px;
+  top: 50px;
+  right: 50px;
+}
+
+.button {
+  position: absolute;
+  width: 79px;
+  top: 250px;
+  right: 50px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .select {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: auto;
+  }
+
+  .label {
+    top: auto;
+    right: auto;
+  }
+
+  .button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: auto;
+    width: max-content;
+  }
+}

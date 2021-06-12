@@ -1,0 +1,10 @@
+.editor {
+  height: 400px !important;
+  width: calc(100% - 200px) !important;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .editor {
+    width: 100% !important;
+  }
+}

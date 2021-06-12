@@ -3,15 +3,17 @@ import React, { useState } from 'react';
 import { ErrorMessage } from './components/errorMessage/ErrorMessage';
 import { Graph } from './components/cytoscape/Graph';
 import { Editor } from './components/ace-editor/Editor';
+import { StructureSidebar } from './components/structureSidebar/StructureSidebar';
 
-import { validateGraphInput, isValidJson } from './utils/utils';
+import { validateGraphInput, isValidJson, debounce } from './utils/utils';
 import initialData from './mockData.json';
 
 function App() {
   const [nodesData, setNodesData] = useState(initialData);
   const [userInputIsValid, setUserInputIsValid] = useState({ isValid: true });
+  const [selectedStructure, setSelectedStructure] = useState();
 
-  const onChangeHandler = (newUserInput) => {
+  const onChangeHandler = debounce((newUserInput) => {
     if (isValidJson(newUserInput)) {
       let validationResult = validateGraphInput(JSON.parse(newUserInput));
 
@@ -20,11 +22,28 @@ function App() {
       }
       setUserInputIsValid(validationResult);
     }
+  }, 500);
+
+  const getSelectedStructureValue = (structureData) => {
+    const selectedStructureValue = JSON.parse(structureData);
+    setNodesData(selectedStructureValue.data);
+    setSelectedStructure(selectedStructureValue.id);
   };
 
   return (
     <div className='App'>
-      <Editor onChange={onChangeHandler} defaultValue={initialData} />
+      <div>
+        <Editor
+          onChange={onChangeHandler}
+          value={JSON.stringify(nodesData, null, 4)}
+          structureID={selectedStructure}
+        />
+        <StructureSidebar
+          data={nodesData}
+          onSelectStructure={getSelectedStructureValue}
+          defaultData={initialData}
+        />
+      </div>
       {!userInputIsValid.isValid && (
         <ErrorMessage errorMsg={userInputIsValid.errorMessage} />
       )}

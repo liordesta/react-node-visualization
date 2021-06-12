@@ -1,5 +1,12 @@
 // Main function that checks the user data from the editor.
 const validateGraphInput = (data) => {
+  if (!Array.isArray(data.nodes) || !Array.isArray(data.edges)) {
+    return {
+      isValid: false,
+      errorMessage: 'Nodes & Edges must be an array.',
+    };
+  }
+
   const nodesCheck = validateNodes(data.nodes);
   if (!nodesCheck.isValid) {
     return nodesCheck;
@@ -170,4 +177,32 @@ const isValidJson = (str) => {
   return true;
 };
 
-export { validateGraphInput, isValidJson };
+// Checks localStorage exists.
+const checkLocalStorage = (key) => {
+  return localStorage.getItem(key) !== null ? true : false;
+};
+
+// Implement debounce so the function will not fire after each key press
+const debounce = (func, wait, immediate) => {
+  var timeout;
+
+  return function executedFunction() {
+    var context = this;
+    var args = arguments;
+
+    var later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+
+    var callNow = immediate && !timeout;
+
+    clearTimeout(timeout);
+
+    timeout = setTimeout(later, wait);
+
+    if (callNow) func.apply(context, args);
+  };
+};
+
+export { validateGraphInput, isValidJson, checkLocalStorage, debounce };
