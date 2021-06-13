@@ -62,8 +62,10 @@ export const StructureSidebar = (props) => {
           );
         })}
       </select>
-      <div className={classes.button}>
-        <button onClick={saveButtonHandler}>Save</button>
+      <div className={classes.buttonDiv}>
+        <button className={classes.button} onClick={saveButtonHandler}>
+          Save
+        </button>
       </div>
     </div>
   );

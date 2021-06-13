@@ -1,12 +1,5 @@
 // Main function that checks the user data from the editor.
 const validateGraphInput = (data) => {
-  if (!Array.isArray(data.nodes) || !Array.isArray(data.edges)) {
-    return {
-      isValid: false,
-      errorMessage: 'Nodes & Edges must be an array.',
-    };
-  }
-
   const nodesCheck = validateNodes(data.nodes);
   if (!nodesCheck.isValid) {
     return nodesCheck;
@@ -32,6 +25,12 @@ const validateGraphInput = (data) => {
 
 // Checks that the user nodes are valid.
 const validateNodes = (nodes) => {
+  if (!Array.isArray(nodes)) {
+    return {
+      isValid: false,
+      errorMessage: 'Nodes must be an array',
+    };
+  }
   if (nodes.length < 1) {
     return {
       isValid: false,
@@ -66,7 +65,7 @@ const validateEdges = (edges) => {
   if (!Array.isArray(edges)) {
     return {
       isValid: false,
-      errorMessage: 'Edges must be an array of',
+      errorMessage: 'Edges must be an array',
     };
   }
   if (edges.length < 1) {

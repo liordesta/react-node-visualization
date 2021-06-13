@@ -7,6 +7,7 @@ import { StructureSidebar } from './components/structureSidebar/StructureSidebar
 
 import { validateGraphInput, isValidJson, debounce } from './utils/utils';
 import initialData from './mockData.json';
+import classes from './App.module.css';
 
 function App() {
   const [nodesData, setNodesData] = useState(initialData);
@@ -32,7 +33,7 @@ function App() {
 
   return (
     <div className='App'>
-      <div>
+      <div className={classes.wrapper}>
         <Editor
           onChange={onChangeHandler}
           value={JSON.stringify(nodesData, null, 4)}
