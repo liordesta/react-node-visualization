@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { checkLocalStorage } from '../../utils/utils';
+import { getDataFromApi } from '../../api/action';
 
 import classes from './StructureSidebar.module.css';
 
@@ -22,6 +23,11 @@ export const StructureSidebar = (props) => {
         id: `${props.selectedStructureValue}`,
       })
     );
+  };
+
+  const pullButtonHandler = async () => {
+    const data = await getDataFromApi();
+    props.setNodesData(data);
   };
 
   const setLocalStorage = (i) => {
@@ -61,6 +67,12 @@ export const StructureSidebar = (props) => {
       <div className={classes.buttonDiv}>
         <button className={classes.button} onClick={saveButtonHandler}>
           Save
+        </button>
+        <button
+          className={`${classes.button} ${classes['button-pull']}`}
+          onClick={pullButtonHandler}
+        >
+          Pull
         </button>
       </div>
     </div>

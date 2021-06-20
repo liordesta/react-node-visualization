@@ -16,7 +16,7 @@
 
 .buttonDiv {
   position: absolute;
-  top: 250px;
+  top: 240px;
   right: 50px;
 }
 
@@ -34,6 +34,11 @@
 .button:hover {
   background-color: #74ead5;
   cursor: pointer;
+}
+
+.button-pull {
+  display: block;
+  margin-top: 15px;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {

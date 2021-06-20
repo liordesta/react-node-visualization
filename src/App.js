@@ -42,6 +42,7 @@ function App() {
         <StructureSidebar
           data={nodesData}
           onSelectStructure={getSelectedStructureValue}
+          setNodesData={setNodesData}
           defaultData={initialData}
           selectedStructureValue={selectedStructure}
         />
