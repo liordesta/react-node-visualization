@@ -13,8 +13,12 @@ function App() {
   const [nodesData, setNodesData] = useState(initialData);
   const [userInputIsValid, setUserInputIsValid] = useState({ isValid: true });
   const [selectedStructure, setSelectedStructure] = useState(0);
+  const [editorValue, setEditorValue] = useState(
+    JSON.stringify(initialData, null, 4)
+  );
 
   const onChangeHandler = debounce((newUserInput) => {
+    setEditorValue(newUserInput);
     if (isValidJson(newUserInput)) {
       let validationResult = validateGraphInput(JSON.parse(newUserInput));
 
@@ -36,7 +40,7 @@ function App() {
       <div className={classes.wrapper}>
         <Editor
           onChange={onChangeHandler}
-          value={JSON.stringify(nodesData, null, 4)}
+          value={editorValue}
           structureID={selectedStructure}
         />
         <StructureSidebar
