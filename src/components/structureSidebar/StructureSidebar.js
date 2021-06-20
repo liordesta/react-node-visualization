@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { checkLocalStorage } from '../../utils/utils';
 
@@ -7,11 +7,7 @@ import classes from './StructureSidebar.module.css';
 const structureAmount = [1, 2, 3, 4, 5];
 
 export const StructureSidebar = (props) => {
-  const [selectedStructure, setSelectedStructure] = useState(0);
-
   const structureHandler = (event) => {
-    setSelectedStructure(event.target.value - 1);
-
     const savedStructure = localStorage.getItem(
       `structure-${event.target.value - 1}`
     );
@@ -20,10 +16,10 @@ export const StructureSidebar = (props) => {
 
   const saveButtonHandler = () => {
     localStorage.setItem(
-      `structure-${selectedStructure}`,
+      `${props.selectedStructureValue}`,
       JSON.stringify({
         data: props.data,
-        id: `structure-${selectedStructure}`,
+        id: `${props.selectedStructureValue}`,
       })
     );
   };

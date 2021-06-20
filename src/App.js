@@ -12,7 +12,7 @@ import classes from './App.module.css';
 function App() {
   const [nodesData, setNodesData] = useState(initialData);
   const [userInputIsValid, setUserInputIsValid] = useState({ isValid: true });
-  const [selectedStructure, setSelectedStructure] = useState();
+  const [selectedStructure, setSelectedStructure] = useState(0);
 
   const onChangeHandler = debounce((newUserInput) => {
     if (isValidJson(newUserInput)) {
@@ -43,6 +43,7 @@ function App() {
           data={nodesData}
           onSelectStructure={getSelectedStructureValue}
           defaultData={initialData}
+          selectedStructureValue={selectedStructure}
         />
       </div>
       {!userInputIsValid.isValid && (
