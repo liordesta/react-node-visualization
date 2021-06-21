@@ -47,6 +47,7 @@ function App() {
           data={nodesData}
           onSelectStructure={getSelectedStructureValue}
           setNodesData={setNodesData}
+          setEditorData={setEditorValue}
           defaultData={initialData}
           selectedStructureValue={selectedStructure}
         />

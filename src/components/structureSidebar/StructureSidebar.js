@@ -28,6 +28,7 @@ export const StructureSidebar = (props) => {
   const pullButtonHandler = async () => {
     const data = await getDataFromApi();
     props.setNodesData(data);
+    props.setEditorData(JSON.stringify(data, null, 4));
   };
 
   const setLocalStorage = (i) => {
