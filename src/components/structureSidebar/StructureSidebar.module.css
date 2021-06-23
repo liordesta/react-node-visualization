@@ -1,34 +1,35 @@
-.select {
-  position: absolute;
-  width: 100px;
-  height: 30px;
-  top: 170px;
-  right: 50px;
-}
-
-.label {
-  position: absolute;
-  width: 100px;
-  top: 50px;
-  right: 50px;
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   color: white;
 }
 
+.label {
+  text-align: center;
+}
+
+.select {
+  width: 100px;
+  height: 30px;
+}
+
 .buttonDiv {
-  position: absolute;
-  top: 240px;
-  right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .button {
-  background-color: #06e1ba;
-  border: 0;
-  color: #250e48;
-  font-size: 16px;
-  font-weight: 700;
-  border-radius: 60px;
   height: 50px;
   width: 100px;
+  font-size: 16px;
+  font-weight: 700;
+  border: 0;
+  border-radius: 60px;
+  color: #250e48;
+  background-color: #06e1ba;
 }
 
 .button:hover {
@@ -37,33 +38,5 @@
 }
 
 .button-pull {
-  display: block;
-  margin-top: 15px;
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  .select {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    top: auto;
-  }
-
-  .label {
-    top: auto;
-    right: auto;
-    margin-top: 10px;
-  }
-
-  .buttonDiv {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    top: auto;
-    width: max-content;
-  }
-
-  .button {
-    margin: 10px 0;
-  }
+  margin-top: 20px;
 }

@@ -45,7 +45,7 @@ export const StructureSidebar = (props) => {
     }
   };
   return (
-    <div>
+    <div className={classes.sidebar}>
       <label htmlFor='selectElm' className={classes.label}>
         Select or Save current Data Structure
       </label>
